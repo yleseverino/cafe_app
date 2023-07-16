@@ -1,4 +1,4 @@
-import 'package:cafe_app/presentantion/screens/list_option.dart';
+import 'package:cafe_app/presentantion/screens/select_grain.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,19 +9,30 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Café'),
+        title: Text('Ylebucks'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-
-        children: [
-          Icon(Icons.coffee),
-          ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ListOption(title: 'Opção de Sabores')));
-          }, child: Text("Pedir um café")),
-          ElevatedButton(onPressed: (){}, child: Text("Pedir dois cafés")),
-          ElevatedButton(onPressed: (){}, child: Text("Pedir três cafés")),
-        ],
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: Image(image: AssetImage('assets/coffee-cup.png'), width: 100,),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ListGrainScreen()));
+                },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: Text("Pedir um café", style: Theme.of(context).textTheme.titleLarge,),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
